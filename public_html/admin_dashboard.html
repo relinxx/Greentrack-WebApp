@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - GreenTrack</title>
+    <link rel="stylesheet" href="../css/admin_modern.css">
+    <link rel="stylesheet" href="../css/styles.css?v=1.2">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <link rel="stylesheet" href="../css/large-screens.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <!-- Add Font Awesome for icons (optional, but good for toggle button) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-container">
+            <h2>Admin Dashboard</h2>
+            <div class="header-actions">
+                <!-- Theme Toggle Button -->
+                <button id="themeToggleBtn" class="theme-toggle-button" title="Toggle theme">
+                    <i class="fas fa-sun"></i> <!-- Default: Light mode icon -->
+                </button>
+                <a href="#" id="logoutBtn" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="admin-main admin-container">
+        <div class="tab-container">
+            <div class="tab-buttons">
+                <button class="tab-button active" data-tab="reports">Trash Reports</button>
+                <button class="tab-button" data-tab="plantings">Planting Reports</button>
+                <button class="tab-button" data-tab="locations">Recommended Locations</button>
+                <!-- <button class="tab-button" data-tab="users">User Management</button> -->
+            </div>
+
+            <!-- Trash Reports Tab -->
+            <div id="reports" class="tab-content active">
+                <div class="content-card">
+                    <div class="card-padding">
+                        <h4>Trash Reports</h4>
+                        <div id="trashReports" class="report-list">
+                            <p>Loading trash reports...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Planting Reports Tab -->
+            <div id="plantings" class="tab-content">
+                 <div class="content-card">
+                    <div class="card-padding">
+                        <h4>Planting Reports</h4>
+                        <div id="plantingReports" class="report-list">
+                            <p>Loading planting reports...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommended Locations Tab -->
+            <div id="locations" class="tab-content">
+                <div class="content-card">
+                    <div class="card-padding">
+                        <h4>Recommended Planting Locations</h4>
+                        <div id="locationsMap"></div>
+                        <div class="map-instructions">
+                            Click anywhere on the map to set the location coordinates for a new recommendation.
+                        </div>
+                        <div class="add-location-form content-card">
+                             <div class="card-padding">
+                                <h4>Add New Recommended Location</h4>
+                                <form id="addLocationForm">
+                                    <div class="form-group">
+                                        <label for="locationName">Location Name</label>
+                                        <input type="text" id="locationName" name="locationName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="latitude">Latitude</label>
+                                        <input type="number" id="latitude" name="latitude" step="any" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="longitude">Longitude</label>
+                                        <input type="number" id="longitude" name="longitude" step="any" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea id="description" name="description" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-action btn-approve">Add Location</button>
+                                </form>
+                            </div>
+                        </div>
+                        <h4>Existing Recommended Locations</h4>
+                        <div id="recommendedLocations" class="locations-list">
+                             <p>Loading recommended locations...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Management Tab (Example Structure) -->
+            <!-- ... -->
+
+        </div>
+    </main>
+
+    <!-- Report Detail Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div id="modalContent">
+                <!-- Modal content will be loaded here by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Theme Toggle Script (New) -->
+    <script src="../js/theme_toggle.js"></script>
+    <!-- Dashboard Script -->
+    <script src="../js/admin_dashboard.js"></script>
+</body>
+</html>

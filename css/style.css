@@ -1,0 +1,750 @@
+/* General Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 10px;
+    min-height: 70px;
+    border-bottom: #0779e4 3px solid;
+}
+
+header h1 {
+    float: left;
+    margin: 0;
+    padding: 15px 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    display: inline;
+    padding: 0 15px;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header a:hover {
+    color: #0779e4;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+    background: #fff;
+    min-height: 400px; /* Ensure footer doesn't jump up */
+    margin: 20px auto;
+    max-width: 1100px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+/* Home Page Specific */
+#hero {
+    background: #0779e4;
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#hero h2 {
+    margin-top: 0;
+    font-size: 2.5em;
+}
+
+.cta-button {
+    display: inline-block;
+    background: #e67e22;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    margin: 10px;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+
+.cta-button:hover {
+    background: #d35400;
+}
+
+#stats {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    padding: 20px;
+    background: #eee;
+    margin-bottom: 20px;
+}
+
+.stat-item span {
+    font-size: 2em;
+    font-weight: bold;
+    display: block;
+    color: #0779e4;
+}
+
+#recent-reports {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+#recent-reports h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#reports-preview-container .report-preview {
+    border-bottom: 1px dashed #ccc;
+    padding: 10px 0;
+}
+#reports-preview-container .report-preview:last-child {
+    border-bottom: none;
+}
+
+/* Forms General */
+form label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form textarea,
+form input[type="file"] {
+    width: 100%;
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+form button[type="submit"],
+form button[type="button"] {
+    padding: 0.8em 1.5em;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+form button[type="submit"] {
+     background-color: #28a745; /* Green for submit */
+}
+form button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+form button[type="button"] {
+    background-color: #6c757d; /* Grey for secondary actions */
+}
+form button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+/* Messages */
+.auth-message, #form-message {
+    margin-top: 1em;
+    padding: 0.8em;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Map Controls */
+#map-controls {
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+.emoji-marker {
+    font-size: 28px;
+    line-height: 30px;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    border: 1px solid #999;
+    box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Map Markers */
+.tree-marker, .trash-marker {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: none !important;
+    border: none !important;
+    font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji", "Noto Color Emoji", sans-serif !important;
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.tree-marker div, .trash-marker div {
+    font-size: 32px !important;
+    line-height: 1 !important;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3) !important;
+    text-align: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Override Leaflet's default marker styles */
+.leaflet-marker-icon {
+    background: none !important;
+    border: none !important;
+}
+
+/* Map Popups */
+.marker-popup {
+    padding: 10px;
+    max-width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.marker-popup h3 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 16px;
+}
+
+.marker-popup p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #34495e;
+}
+
+.marker-popup img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+/* Map Legend */
+.map-legend {
+    background: white;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+
+.map-legend h4 {
+    margin: 0 0 5px 0;
+    font-size: 14px;
+    color: #2c3e50;
+}
+
+.map-legend div {
+    margin: 5px 0;
+    font-size: 12px;
+    color: #34495e;
+    display: flex;
+    align-items: center;
+}
+
+.map-legend .tree-marker,
+.map-legend .trash-marker {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.map-legend .tree-marker div,
+.map-legend .trash-marker div {
+    font-size: 24px !important;
+}
+
+/* Responsive */
+@media(max-width: 768px){
+    header h1,
+    header nav,
+    header nav li {
+        float: none;
+        text-align: center;
+        width: 100%;
+        padding: 5px 0;
+    }
+    header nav ul {
+        margin-top: 10px;
+    }
+    #stats {
+        flex-direction: column;
+    }
+    .stat-item {
+        margin-bottom: 15px;
+    }
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #27ae60;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Recommended Locations */
+.recommended-locations {
+    padding: 1rem;
+}
+
+.location-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.location-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.location-card h3 {
+    color: #2c3e50;
+    margin: 0 0 0.5rem 0;
+}
+
+.location-card p {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.location-coords {
+    font-family: monospace;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Admin Login Styles */
+.admin-login {
+    background: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+/* Admin Dashboard Styles */
+.admin-dashboard {
+    background: #f4f4f4;
+    min-height: 100vh;
+}
+
+.admin-nav {
+    background: #333;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-nav h2 {
+    margin: 0;
+}
+
+.admin-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    background: #0779e4;
+}
+
+.admin-nav a:hover {
+    background: #0669c4;
+}
+
+.admin-main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.admin-section h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #eee;
+}
+
+/* Report/Planting Cards */
+.report-card, .planting-card {
+    background: #f9f9f9;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    border-left: 4px solid #28a745;
+}
+
+.report-card.pending {
+    border-left-color: #ffc107;
+}
+
+.report-card.rejected {
+    border-left-color: #dc3545;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-action {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: white;
+}
+
+.btn-approve {
+    background: #28a745;
+}
+
+.btn-reject {
+    background: #dc3545;
+}
+
+.btn-view {
+    background: #0779e4;
+}
+
+.card-content {
+    margin-bottom: 1rem;
+}
+
+.card-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 0.5rem;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    overflow-y: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    color: #333;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    transition: background-color 0.3s;
+}
+
+.close:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+}
+
+/* Add Location Form */
+.add-location-form {
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.add-location-form h4 {
+    margin-top: 0;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .admin-main {
+        padding: 1rem;
+    }
+    
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .card-actions {
+        margin-top: 0.5rem;
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 10% auto;
+    }
+}
+
+/* Universal Responsive Fluid Typography & Layout */
+html {
+  font-size: clamp(12px, 1.2vw + 1px, 18px);
+}
+
+.container, .card-container, .admin-container, main, section, .news-section {
+  width: 100%;
+  max-width: 1400px;
+  min-width: 280px;
+  margin: 0 auto;
+  padding-left: clamp(8px, 2vw, 32px);
+  padding-right: clamp(8px, 2vw, 32px);
+  box-sizing: border-box;
+}
+
+.page-header h1,
+.section-title,
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+h2, h3 {
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tab-header, .tab-buttons, .nav-links {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.5rem, 1vw, 2rem);
+}
+
+.tab-btn, .tab-button, .nav-links a {
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  padding: clamp(0.4rem, 0.8vw, 1rem) clamp(0.6rem, 1.2vw, 1.5rem);
+  min-width: 80px;
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .container, .card-container, .admin-container, main, section, .news-section {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 2000px) {
+  html { font-size: clamp(16px, 1.5vw, 22px); }
+  .container, .card-container, .admin-container, main, section, .news-section {
+    max-width: 2000px;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+  }
+  .page-header h1, .section-title, h1 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+  }
+}
+
+@media (min-width: 2500px) {
+  html { font-size: clamp(18px, 2vw, 24px); }
+  .container, .card-container, .admin-container, main, section, .news-section {
+    max-width: 2500px;
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+  .cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+  }
+  .page-header h1, .section-title, h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+}
+

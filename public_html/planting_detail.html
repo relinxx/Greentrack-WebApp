@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTrack - Planting Details</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/map.css">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <link rel="stylesheet" href="../css/large-screens.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .info-item {
+            background: var(--primary-color);
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .info-item label {
+            display: block;
+            color: black;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+        .info-item span {
+            font-size: 1.1em;
+            font-weight: 500;
+            color: black;
+        }
+        .description-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: var(--input-bg);
+            border-radius: 6px;
+        }
+        .description-section h4 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        .photos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .photo-item {
+            background: var(--input-bg);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        .photo-item h4 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        .photo-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        #map {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .form-message {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .form-message.error {
+            background: #fee;
+            color: #c00;
+        }
+        .form-message.success {
+            background: #efe;
+            color: #0c0;
+        }
+        .form-message.info {
+            background: #eef;
+            color: #00c;
+        }
+        .buttons-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 1000;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-primary {
+            background: var(--primary-color);
+            color: black;
+        }
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="GreenTrack Logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%234CAF50%22%2F%3E%3Ctext%20x%3D%2220%22%20y%3D%2225%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%23FFFFFF%22%20text-anchor%3D%22middle%22%3EGT%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <h1>GreenTrack</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="plant_trees.html">Plant Trees</a></li>
+                    <li><a href="report.html">Report Waste</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="recommended_locations.html">Recommended Locations</a></li>
+                    <li><a href="story.html">Stories</a></li>
+                    <li><a href="profile.html" id="profile-link">Profile</a></li>
+                </ul>
+            </nav>
+            <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="light-icon" title="Switch to light mode">🔆</span>
+                <span class="dark-icon" title="Switch to dark mode">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Planting Details</h1>
+            </div>
+            
+            <div id="planting-message" class="form-message" style="display: none;"></div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>Planting Information</h3>
+                </div>
+                <div class="card-body">
+                    <div id="planting-content">
+                        <p>Loading planting details...</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Location</h3>
+                </div>
+                <div class="card-body">
+                    <div id="map" class="map-container"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/planting_detail.js"></script>
+</body>
+</html> 

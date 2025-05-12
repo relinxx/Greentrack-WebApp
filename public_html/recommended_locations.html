@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommended Planting Locations - GreenTrack</title>
+    <link rel="stylesheet" href="../css/styles.css?v=1.2">
+    <link rel="stylesheet" href="../css/map.css?v=1.1">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <link rel="stylesheet" href="../css/large-screens.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="GreenTrack Logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%234CAF50%22%2F%3E%3Ctext%20x%3D%2220%22%20y%3D%2225%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%23FFFFFF%22%20text-anchor%3D%22middle%22%3EGT%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <h1>GreenTrack</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="plant_trees.html">Plant Trees</a></li>
+                    <li><a href="report.html">Report Waste</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="recommended_locations.html" class="active">Recommended Locations</a></li>
+                    <li><a href="story.html">Stories</a></li>
+                    <li><a href="profile.html" id="profile-link">Profile</a></li>
+                </ul>
+            </nav>
+            <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="light-icon" title="Switch to light mode">🔆</span>
+                <span class="dark-icon" title="Switch to dark mode">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="container">
+            <div class="page-header">
+                <h1>Recommended Planting Locations</h1>
+                <p class="subtitle">These are high-priority areas identified for tree planting. Choose a location near you and make a difference!</p>
+            </div>
+            
+            <div id="recommended-map" class="map-container"></div>
+            
+            <div class="locations-container">
+                <div id="locations-list" class="card-container">
+                    <!-- Location cards will be inserted here dynamically -->
+                    <div class="loading">Loading recommended locations...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/recommended_locations.js"></script>
+</body>
+</html> 

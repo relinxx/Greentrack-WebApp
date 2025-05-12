@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories - GreenTrack</title>
+    <link rel="stylesheet" href="../css/styles.css?v=1.2">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <style>
+        /* Common styles */
+        .form-message {
+            margin: 1em 0;
+            padding: 1em;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        .error-message {
+            background-color: rgba(198, 40, 40, 0.1);
+            color: #e74c3c;
+            border: 1px solid rgba(198, 40, 40, 0.2);
+        }
+        .success-message {
+            background-color: rgba(143, 212, 146, 0.1);
+            color: #2ecc71;
+            border: 1px solid rgba(46, 125, 50, 0.2);
+        }
+
+        /* Story List styles */
+        .story-list {
+            list-style: none;
+            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .story-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1.5em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .story-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        .story-card {
+            padding: 1.5em;
+        }
+        .story-header {
+            margin-bottom: 1em;
+        }
+        .story-header h3 {
+            margin: 0 0 0.5em 0;
+            font-size: 1.4em;
+            color: rgb(164, 217, 84);
+        }
+        .story-header h3 a {
+            color: greenyellow;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .story-header h3 a:hover {
+            color: greenyellow;
+        }
+        .story-meta {
+            font-size: 0.9em;
+            color: rgb(72, 199, 72);
+        }
+        .story-body {
+            margin-bottom: 1.5em;
+            line-height: 1.6;
+            color: rgb(188, 241, 108);
+        }
+        .story-body p {
+            margin: 0;
+        }
+        .story-body a {
+            color: rgb(139, 231, 33);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .story-body a:hover {
+            text-decoration: underline;
+        }
+        .story-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1em;
+        }
+        .story-footer a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+        .story-footer a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Story Detail styles */
+        #story-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+        #story-title {
+            font-size: 2em;
+            color: var(--text-color);
+            margin: 0 0 0.5em 0;
+        }
+        .story-content {
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 2em;
+            padding-bottom: 1.5em;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .story-actions {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            margin-bottom: 2em;
+        }
+        .story-actions button {
+            padding: 0.5em 1em;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        #like-btn {
+            background-color: var(--primary-color);
+            color: var(--button-text-color);
+        }
+        #like-btn:hover {
+            background-color: var(--primary-hover);
+        }
+        #edit-story-btn {
+            background-color: var(--secondary-color);
+            color: var(--button-text-color);
+        }
+        #edit-story-btn:hover {
+            background-color: var(--secondary-hover);
+        }
+        #delete-story-btn {
+            background-color: var(--danger-color);
+            color: var(--button-text-color);
+        }
+        #delete-story-btn:hover {
+            background-color: var(--danger-color);
+        }
+
+        /* Comments section */
+        .comments-section {
+            max-width: 800px;
+            margin: 2em auto;
+            background: var(--card-bg);
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+        .comments-section h3 {
+            color: var(--text-color);
+            margin: 0 0 1em 0;
+            font-size: 1.4em;
+        }
+        .comment-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2em 0;
+        }
+        .comment-item {
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 1em;
+            margin-bottom: 1em;
+        }
+        .comment-meta {
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 0.5em;
+        }
+        .comment-actions button {
+            background-color: var(--danger-color);
+            color: var(--button-text-color);
+            border: none;
+            padding: 0.3em 0.8em;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background-color 0.2s ease;
+        }
+        .comment-actions button:hover {
+            background-color: var(--danger-color);
+        }
+        #comment-form textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 1em;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1em;
+            font-family: inherit;
+            resize: vertical;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        #comment-form button {
+            background-color: var(--primary-color);
+            color: var(--button-text-color);
+            border: none;
+            padding: 0.8em 1.5em;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        #comment-form button:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Form styles */
+        .form-group {
+            margin-bottom: 1.5em;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8em;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1em;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        .form-group textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+        .form-group small {
+            display: block;
+            margin-top: 0.5em;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        /* Create/Edit Story View */
+        #create-story-view,
+        #edit-story-view {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+        #create-story-view h2,
+        #edit-story-view h2 {
+            color: var(--text-color);
+            margin: 0 0 1.5em 0;
+        }
+        #create-story-btn {
+            background-color: var(--primary-color);
+            color: var(--button-text-color);
+            border: none;
+            padding: 0.8em 1.5em;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+        #create-story-btn:hover {
+            background-color: var(--primary-color);
+        }
+        #cancel-btn {
+            background-color: var(--gray-color);
+            color: var(--button-text-color);
+            border: none;
+            padding: 0.8em 1.5em;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            margin-left: 1em;
+            transition: background-color 0.2s ease;
+        }
+        #cancel-btn:hover {
+            background-color: var(--gray-hover);
+        }
+
+        /* Main container */
+        main {
+            padding: 2em;
+            background-color: var(--bg-color);
+            min-height: calc(100vh - 200px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="GreenTrack Logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%234CAF50%22%2F%3E%3Ctext%20x%3D%2220%22%20y%3D%2225%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%23FFFFFF%22%20text-anchor%3D%22middle%22%3EGT%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <h1>GreenTrack</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="plant_trees.html">Plant Trees</a></li>
+                    <li><a href="report.html">Report Waste</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="recommended_locations.html">Recommended Locations</a></li>
+                    <li><a href="story.html" class="active">Stories</a></li>
+                    <li><a href="profile.html" id="profile-link">Profile</a></li>
+                </ul>
+            </nav>
+            <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="light-icon" title="Switch to light mode">🔆</span>
+                <span class="dark-icon" title="Switch to dark mode">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Story List View -->
+        <div id="story-list-view" style="display: none;">
+            <h2>Planting Success Stories</h2>
+            <div id="stories-message" class="form-message" style="display: none;"></div>
+            <div class="story-controls">
+                <button id="create-story-btn" style="display: none;">Share Your Story</button>
+            </div>
+            <ul id="story-list" class="story-list">
+                <p>Loading stories...</p>
+            </ul>
+        </div>
+
+        <!-- Story Detail View -->
+        <div id="story-detail-view" style="display: none;">
+            <div id="story-detail-message" class="form-message" style="display: none;"></div>
+            <article id="story-container">
+                <h2 id="story-title">Loading story...</h2>
+                <div id="story-meta" class="story-meta"></div>
+                <div id="story-content" class="story-content"></div>
+                <div id="story-actions" class="story-actions" style="display: none;">
+                    <button id="like-btn">Like</button>
+                    <span id="like-count">0</span> Likes
+                    <button id="edit-story-btn" style="display: none; margin-left: 20px;">Edit Story</button>
+                    <button id="delete-story-btn" style="display: none;">Delete Story</button>
+                </div>
+            </article>
+
+            <section id="comments-section" class="comments-section">
+                <h3>Comments <span id="comment-count">0</span></h3>
+                <ul id="comment-list" class="comment-list">
+                    <p>Loading comments...</p>
+                </ul>
+
+                <div id="comment-form-container" style="display: none;">
+                    <h4>Leave a Comment</h4>
+                    <form id="comment-form">
+                        <textarea id="comment_text" name="comment_text" required></textarea>
+                        <button type="submit">Post Comment</button>
+                    </form>
+                    <div id="comment-form-message" class="form-message" style="display: none;"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Create Story View -->
+        <div id="create-story-view" style="display: none;">
+            <h2>Share Your Planting Success Story</h2>
+            <div id="form-message" class="form-message" style="display: none;"></div>
+            <form id="story-form">
+                <div class="form-group">
+                    <label for="title">Story Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">Your Story:</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="planting_id">Link to Planting Event (Optional):</label>
+                    <select id="planting_id" name="planting_id">
+                        <option value="">-- Select a recent planting --</option>
+                    </select>
+                    <small>You can link this story to one of your logged planting activities.</small>
+                </div>
+
+                <button type="submit">Publish Story</button>
+            </form>
+        </div>
+
+        <!-- Edit Story View -->
+        <div id="edit-story-view" style="display: none;">
+            <h2>Edit Your Story</h2>
+            <div id="edit-form-message" class="form-message" style="display: none;"></div>
+            <form id="edit-story-form">
+                <div class="form-group">
+                    <label for="edit-title">Story Title:</label>
+                    <input type="text" id="edit-title" name="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-content">Your Story:</label>
+                    <textarea id="edit-content" name="content" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-planting_id">Link to Planting Event (Optional):</label>
+                    <select id="edit-planting_id" name="planting_id">
+                        <option value="">-- Select a recent planting --</option>
+                    </select>
+                    <small>You can link this story to one of your logged planting activities.</small>
+                </div>
+
+                <button type="submit">Update Story</button>
+                <button type="button" id="cancel-btn">Cancel</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Load scripts -->
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/story.js"></script>
+</body>
+</html> 

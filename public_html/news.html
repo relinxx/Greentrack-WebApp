@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates - GreenTrack</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/news.css">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <link rel="stylesheet" href="../css/large-screens.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="GreenTrack Logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%232B7A78%22%2F%3E%3Ctext%20x%3D%2220%22%20y%3D%2225%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%23FEFFFF%22%20text-anchor%3D%22middle%22%3EGT%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <h1>GreenTrack</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="plant_trees.html">Plant Trees</a></li>
+                    <li><a href="report.html">Report Waste</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="recommended_locations.html">Recommended Locations</a></li>
+                    <li><a href="stories.html">Stories</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+                <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <span class="light-icon" title="Switch to light mode">🔆</span>
+                    <span class="dark-icon" title="Switch to dark mode">🌙</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-header animated">
+            <h1>Environmental News & Updates</h1>
+            <p class="subtitle">Stay informed about the latest environmental developments and GreenTrack initiatives.</p>
+        </div>
+
+        <section class="news-section">
+            <div class="featured-news animated">
+                <div class="news-content">
+                    <span class="news-label breaking">BREAKING</span>
+                    <span class="news-label live">LIVE</span>
+                    <h2 class="news-title">Amazon Deforestation Hits Record Low in 2024</h2>
+                    <p class="news-summary">Recent data shows an 11.3% reduction in deforestation rates in the Amazon, thanks to global initiatives and community efforts.</p>
+                    <div class="news-meta">
+                        <span class="date">Dec 15, 2024</span> | <span class="source">Earth.Org</span>
+                    </div>
+                    <a href="https://earth.org/deforestation-in-the-amazon/" target="_blank" class="btn btn-primary read-more">Read More</a>
+                </div>
+            </div>
+
+            <div class="news-grid">
+                <div class="news-item card animated">
+                    <div class="news-content">
+                        <h3 class="news-title">Delhi Air Pollution Crisis Worsens</h3>
+                        <p class="news-summary">Air quality in Delhi reached hazardous levels with PM2.5 levels exceeding 400, prompting urgent action.</p>
+                        <div class="news-meta">
+                            <span class="date">Nov 20, 2024</span> | <span class="source">Al Jazeera</span>
+                        </div>
+                        <a href="https://www.aljazeera.com/news/2024/11/20/delhi-air-pollution" target="_blank" class="btn btn-primary read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="news-item card animated">
+                    <div class="news-content">
+                        <h3 class="news-title">Global Climate Action Summit 2025</h3>
+                        <p class="news-summary">Scheduled for June 2025, the summit aims to accelerate global carbon reduction efforts.</p>
+                        <div class="news-meta">
+                            <span class="date">Jan 10, 2025</span> | <span class="source">Climate Council</span>
+                        </div>
+                        <a href="https://www.climatecouncil.org.au/" target="_blank" class="btn btn-primary read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="news-item card animated">
+                    <div class="news-content">
+                        <h3 class="news-title">Amazon Cleared for COP30 Highway</h3>
+                        <p class="news-summary">Tens of thousands of acres of Amazon rainforest are being cleared for a highway ahead of COP30.</p>
+                        <div class="news-meta">
+                            <span class="date">Mar 12, 2025</span> | <span class="source">BBC News</span>
+                        </div>
+                        <a href="https://www.bbc.co.uk/news/articles/czxx8j8v5v2o" target="_blank" class="btn btn-primary read-more">Read More</a>
+                    </div>
+                </div>
+                <div class="news-item card animated">
+                    <div class="news-content">
+                        <h3 class="news-title">India's Air Pollution Challenges</h3>
+                        <p class="news-summary">Recent studies highlight Delhi's ongoing air quality issues with urban growth exacerbating pollution.</p>
+                        <div class="news-meta">
+                            <span class="date">May 05, 2025</span> | <span class="source">WRI India</span>
+                        </div>
+                        <a href="https://wri-india.org/" target="_blank" class="btn btn-primary read-more">Read More</a>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="opinion-section card animated">
+                <h2>Opinions</h2>
+                <div class="opinion-item">
+                    <h3 class="opinion-title">GreenTrack Community Planting Event</h3>
+                    <p class="opinion-summary">Join us for a community tree-planting event to celebrate Earth Day 2025.</p>
+                    <div class="news-meta">
+                        <span class="date">Apr 20, 2025</span> | <span class="source">GreenTrack</span>
+                    </div>
+                    <a href="#" target="_blank" class="btn btn-primary read-more">Read More</a>
+                </div>
+                <div class="opinion-item">
+                    <h3 class="opinion-title">Ocean Plastic Pollution Reaches Critical Levels</h3>
+                    <p class="opinion-summary">New reports indicate a surge in ocean plastic pollution, threatening marine ecosystems.</p>
+                    <div class="news-meta">
+                        <span class="date">Feb 10, 2025</span> | <span class="source">National Geographic</span>
+                    </div>
+                    <a href="https://www.nationalgeographic.com/environment/oceans/" target="_blank" class="btn btn-primary read-more">Read More</a>
+                </div>
+            </aside>
+        </section>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/news.js"></script>
+</body>
+</html>

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTrack - Enhancing Global Environment</title>
+    <link rel="stylesheet" href="../css/styles.css?v=1.2">
+    <link rel="stylesheet" href="../css/green-styles.css?v=1.0">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        .header-container {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0.5rem 2rem;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: -40px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: 40px;
+        }
+        
+        .logo h1 {
+            font-size: 1.2rem;
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            margin-left: 30px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 15px;
+        }
+        
+        .nav-links li a {
+            font-size: 0.95rem;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        .user-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-left: auto;
+        }
+        
+        .user-profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        
+        .user-icon-link {
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .user-icon {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--circle-gray);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .user-icon i {
+            font-size: 1rem;
+        }
+        
+        .username-display {
+            font-size: 0.75rem;
+            bottom: -20px;
+        }
+        
+        .xp-progress-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-top: 6px;
+            width: 85px;
+        }
+        
+        .xp-bar-container {
+            width: 100%;
+            position: relative;
+            background-color: rgba(221, 221, 221, 0.6);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 6px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+        }
+        
+        .xp-bar-fill {
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s ease-in-out, background-color 0.3s ease;
+            border-radius: 10px;
+            background-image: linear-gradient(to right, #FFC107, #4CAF50);
+            box-shadow: 0 0 3px rgba(134, 194, 50, 0.6);
+        }
+        
+        .xp-label {
+            font-size: 0.7rem;
+            color: var(--text-dark);
+            text-align: center;
+            font-weight: 500;
+            text-shadow: 0 1px 1px rgba(6, 41, 10, 0.5);
+            background-color: rgba(1, 49, 12, 0.5);
+            padding: 2px 6px;
+            border-radius: 8px;
+            margin-top: 20px;
+            margin-right: 35px;
+            display: block;
+        }
+        
+        .xp-progress {
+            position: relative;
+            margin-left: 5px;
+        }
+        
+        .xp-progress-text {
+            position: absolute;
+            font-size: 0.65rem;
+            color: var(--text-dark);
+            right: 0;
+            top: -15px;
+        }
+        
+        .theme-toggle {
+            width: 35px;
+            height: 35px;
+        }
+        
+        .theme-toggle .light-icon,
+        .theme-toggle .dark-icon {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 992px) {
+            .nav-links li a {
+                font-size: 0.85rem;
+                padding: 6px 8px;
+            }
+        }
+        
+        /* Pulse animation for XP bar */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        .pulse-animation {
+            animation: pulse 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="GreenTrack Logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%234CAF50%22%2F%3E%3Ctext%20x%3D%2220%22%20y%3D%2225%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%23FFFFFF%22%20text-anchor%3D%22middle%22%3EGT%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <h1>GreenTrack</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="map.html">Map</a></li>
+                    <li><a href="plant_trees.html">Plant</a></li>
+                    <li><a href="report.html">Report</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="recommended_locations.html">Recommended Locations</a></li>
+                    <li><a href="story.html">Stories</a></li>
+                </ul>
+            </nav>
+            <div class="user-controls">
+                <a href="profile.html" class="user-icon-link">
+                    <div class="user-icon">
+                        <i class="fas fa-user"></i>
+                        <span class="username-display" id="profile-link">Profile</span>
+                    </div>
+                </a>
+                <div class="xp-progress-container">
+                    <div class="xp-bar-container">
+                        <div class="xp-bar-fill" id="xp-bar-fill"></div>
+                    </div>
+                    <span class="xp-label" id="xp-points">0/500 XP</span>
+                </div>
+                <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                    <span class="light-icon" title="Switch to light mode">🔆</span>
+                    <span class="dark-icon" title="Switch to dark mode">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <section class="hero animated" id="home">
+        <div class="hero-content">
+            <h1>Empowering Global Environmental Action</h1>
+            <p>Join our community of eco-warriors working towards a sustainable future</p>
+            <a href="#how-it-works" class="cta-btn">Start Your Journey</a>
+        </div>
+    </section>
+
+    <section class="recent-activity">
+        <div class="container">
+            <h2 class="section-title">Recent Activity</h2>
+            <div class="tab-container">
+                <div class="tab-header">
+                    <button class="tab-btn active" data-tab="reports">Reports</button>
+                    <button class="tab-btn" data-tab="plantings">Plantings</button>
+                    <button class="tab-btn" data-tab="recommended">Recommended</button>
+                    <button class="tab-btn" data-tab="news">News</button>
+                </div>
+                <div class="tab-content">
+                    <div id="reports" class="tab-pane active">
+                        <div id="reports-preview-container" class="cards-grid">
+                            <p>Loading recent reports...</p>
+                        </div>
+                        <div class="view-all-link">
+                            <a href="map.html">View All Reports on Map →</a>
+                        </div>
+                    </div>
+                    
+                    <div id="plantings" class="tab-pane">
+                        <p>View tree planting activities on our interactive map</p>
+                        <div class="view-all-link">
+                            <a href="map.html">View Plantings on Map →</a>
+                        </div>
+                    </div>
+                    
+                    <div id="recommended" class="tab-pane">
+                        <div class="recommended-locations">
+                            <div id="recommendedLocationsList" class="cards-grid">
+                                <p>Loading recommended locations...</p>
+                            </div>
+                            <div class="view-all-link">
+                                <a href="recommended_locations.html">View All Locations →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="news" class="tab-pane">
+                        <p>Check out our latest environmental news and updates</p>
+                        <div class="view-all-link">
+                            <a href="news.html">View All News →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works" id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-container">
+            <div class="steps-line"></div>
+            <div class="step animated">
+                <div class="circle-icon">
+                    <img src="../images/phone-icon.png" alt="Phone scanning caterpillar" />
+                    <div class="step-number">1</div>
+                </div>
+                <h3>Plant a Tree or report the trash</h3>
+                <p>Use your smartphone to capture an image of the plant or trash you've discovered.</p>
+            </div>
+            <div class="step animated">
+                <div class="circle-icon">
+                    <img src="../images/community-icon.png" alt="Community discussion icon" />
+                    <div class="step-number">2</div>
+                </div>
+                <h3>Community</h3>
+                <p>Share your experience with the community and get feedback.</p>
+            </div>
+            <div class="step animated">
+                <div class="circle-icon">
+                    <img src="../images/results-icon.png" alt="Identification results icon" />
+                    <div class="step-number">3</div>
+                </div>
+                <h3>Gain xp and level up</h3>
+                <p>Showcase your progress and help the community grow.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stats-section animated" id="stats">
+        <h2>Global Statistics</h2>
+        <p>Explore our environmental impact data across different regions.</p>
+        <div class="stats-image-container">
+            <img src="../images/world-map-stats.png" alt="World Map with Environmental Stats" />
+        </div>
+        <div class="stats-info">
+            <div class="stat-item">
+                <h3>20 million</h3>
+                <p>people using Ecosia</p>
+            </div>
+            <div class="stat-item">
+                <h3>900+</h3>
+                <p>species</p>
+            </div>
+            <div class="stat-item">
+                <h3>35+</h3>
+                <p>countries involved</p>
+            </div>
+            <div class="stat-item">
+                <h3>70+</h3>
+                <p>active projects</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
+            crossorigin=""></script>
+    <!-- Add config JS file -->
+    <script src="../js/config.js"></script>
+    <!-- Add main JS file -->
+    <script src="../js/main.js"></script>
+    <!-- Add index JS file -->
+    <script src="../js/index.js"></script>
+    
+    <!-- Immediate XP bar update script -->
+    <script>
+        // Update XP bar immediately from localStorage if available
+        (function() {
+            const userId = localStorage.getItem("userId");
+            if (userId) {
+                const cachedXP = localStorage.getItem("userXP");
+                if (cachedXP) {
+                    console.log("Immediately updating XP bar with cached value:", cachedXP);
+                    const xpBarFill = document.getElementById("xp-bar-fill");
+                    const xpPoints = document.getElementById("xp-points");
+                    
+                    if (xpBarFill) {
+                        const xpValue = parseInt(cachedXP);
+                        const MAX_XP = 500;
+                        const xpPercentage = Math.min((xpValue / MAX_XP) * 100, 100);
+                        
+                        xpBarFill.style.width = xpPercentage + "%";
+                        
+                        if (xpPoints) {
+                            xpPoints.innerHTML = `<strong>${xpValue}</strong>/500 XP`;
+                        }
+                    }
+                }
+            }
+        })();
+    </script>
+</body>
+</html>

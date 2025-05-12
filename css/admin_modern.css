@@ -1,0 +1,914 @@
+/*
+Modern Admin CSS for GreenTrack
+Inspired by Ecosia - Simple, Clean, Responsive
+*/
+
+:root {
+    --primary-color: #319795; /* Teal-like green */
+    --primary-dark: #2C7A7B;
+    --primary-light: #B2F5EA;
+    --secondary-color: #4A5568; /* Gray */
+    --bg-color: #F7FAFC; /* Very light gray */
+    --card-bg: #FFFFFF;
+    --text-color: #2D3748;
+    --text-light: #718096;
+    --border-color: #E2E8F0;
+    --success-color: #48BB78;
+    --error-color: #F56565;
+    --font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    --border-radius: 6px;
+    --box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    --transition-speed: 0.2s ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.admin-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Login & Register Pages */
+.auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.auth-card {
+    background-color: var(--card-bg);
+    padding: 30px 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+.auth-card h1 {
+    color: var(--primary-dark);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: #fff;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(49, 151, 149, 0.2);
+}
+
+.btn-submit {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.auth-link {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.auth-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+.error-message {
+    background-color: rgba(245, 101, 101, 0.1);
+    color: var(--error-color);
+    border: 1px solid rgba(245, 101, 101, 0.3);
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+/* Admin Dashboard */
+.admin-header {
+    background-color: var(--card-bg);
+    padding: 15px 0;
+    box-shadow: var(--box-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.admin-header .admin-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-header h2 {
+    color: var(--primary-dark);
+    margin: 0;
+    font-size: 1.6rem;
+}
+
+.admin-header .logout-btn {
+    background-color: var(--error-color);
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color var(--transition-speed);
+}
+
+.admin-header .logout-btn:hover {
+    background-color: #E53E3E; /* Darker red */
+}
+
+.admin-main {
+    flex-grow: 1;
+    padding-top: 30px;
+}
+
+/* Tabs */
+.tab-container {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.tab-buttons {
+    display: flex;
+    gap: 5px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 25px;
+}
+
+.tab-button {
+    padding: 12px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    color: var(--text-light);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color var(--transition-speed), border-color var(--transition-speed);
+}
+
+.tab-button:hover {
+    color: var(--text-color);
+}
+
+.tab-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Cards for reports/locations */
+.content-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.card-padding {
+    padding: 20px 25px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 15px;
+}
+
+.card-header h4 {
+    margin: 0;
+    color: var(--primary-dark);
+    font-size: 1.2rem;
+}
+
+.report-list, .locations-list {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.report-item, .location-item {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    transition: box-shadow var(--transition-speed);
+}
+
+.report-item:hover, .location-item:hover {
+    box-shadow: var(--box-shadow);
+}
+
+.report-item h5, .location-item h5 {
+    margin: 0 0 10px 0;
+    color: var(--secondary-color);
+}
+
+.report-item p, .location-item p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.report-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-top: 10px;
+}
+
+.report-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn-action {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border-radius: var(--border-radius);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+}
+
+.btn-approve {
+    background-color: var(--success-color);
+}
+.btn-approve:hover {
+    background-color: #38A169; /* Darker green */
+}
+
+.btn-reject {
+    background-color: var(--error-color);
+}
+.btn-reject:hover {
+    background-color: #E53E3E; /* Darker red */
+}
+
+.btn-view {
+    background-color: var(--primary-color);
+}
+.btn-view:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-delete {
+    background-color: var(--secondary-color);
+}
+.btn-delete:hover {
+    background-color: #2D3748; /* Darker gray */
+}
+
+/* Map */
+#locationsMap {
+    height: 450px;
+    width: 100%;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.map-instructions {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(49, 151, 149, 0.05);
+    border-left: 3px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    color: var(--primary-dark);
+}
+
+.add-location-form {
+    margin-bottom: 30px;
+}
+
+.add-location-form h4 {
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    margin: auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--text-light);
+    background: none;
+    border: none;
+    line-height: 1;
+}
+
+.modal-close:hover {
+    color: var(--text-color);
+}
+
+.modal-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px 0;
+    border-radius: var(--border-radius);
+}
+
+.modal-content h3 {
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 25px;
+    }
+
+    .admin-header .admin-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-header h2 {
+        margin-bottom: 10px;
+    }
+
+    .tab-buttons {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .report-list, .locations-list {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+        max-height: 90vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 20px;
+    }
+
+    .auth-card h1 {
+        font-size: 1.5rem;
+    }
+
+    .btn-submit {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .tab-button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+
+    .card-padding {
+        padding: 15px;
+    }
+}
+
+/* Dark Mode Styles */
+:root {
+    /* Light Mode Defaults (already defined) */
+    --bg-color-light: #F7FAFC;
+    --card-bg-light: #FFFFFF;
+    --text-color-light: #2D3748;
+    --text-light-light: #718096;
+    --border-color-light: #E2E8F0;
+    --header-bg-light: #FFFFFF;
+    --input-bg-light: #FFFFFF;
+    --box-shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+    /* Dark Mode Colors */
+    --bg-color-dark: #1A202C; /* Dark gray-blue */
+    --card-bg-dark: #2D3748; /* Slightly lighter gray-blue */
+    --text-color-dark: #E2E8F0; /* Light gray */
+    --text-light-dark: #A0AEC0; /* Medium gray */
+    --border-color-dark: #4A5568; /* Gray */
+    --header-bg-dark: #2D3748;
+    --input-bg-dark: #4A5568;
+    --box-shadow-dark: 0 1px 3px 0 rgba(0, 0, 0, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode {
+    --bg-color: var(--bg-color-dark);
+    --card-bg: var(--card-bg-dark);
+    --text-color: var(--text-color-dark);
+    --text-light: var(--text-light-dark);
+    --border-color: var(--border-color-dark);
+    --header-bg: var(--header-bg-dark);
+    --box-shadow: var(--box-shadow-dark);
+}
+
+/* Apply transitions for smoother theme changes */
+body, .auth-card, .admin-header, .content-card, .report-item, .location-item, .modal-content, input, textarea, select, button, a {
+    transition: background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* Update specific elements for dark mode */
+body.dark-mode .auth-card,
+body.dark-mode .admin-header,
+body.dark-mode .content-card,
+body.dark-mode .report-item,
+body.dark-mode .location-item,
+body.dark-mode .modal-content {
+    background-color: var(--card-bg-dark);
+    border-color: var(--border-color-dark);
+    box-shadow: var(--box-shadow-dark);
+}
+
+body.dark-mode .auth-card h1,
+body.dark-mode .admin-header h2,
+body.dark-mode .card-header h4,
+body.dark-mode .add-location-form h4,
+body.dark-mode .modal-content h3 {
+    color: var(--primary-light);
+}
+
+body.dark-mode .form-group label {
+    color: var(--text-light-dark);
+}
+
+body.dark-mode .form-group input[type="text"],
+body.dark-mode .form-group input[type="email"],
+body.dark-mode .form-group input[type="password"],
+body.dark-mode .form-group input[type="number"],
+body.dark-mode .form-group textarea,
+body.dark-mode .form-group select {
+    background-color: var(--input-bg-dark);
+    border-color: var(--border-color-dark);
+    color: var(--text-color-dark);
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group textarea:focus,
+body.dark-mode .form-group select:focus {
+    background-color: var(--input-bg-dark);
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(178, 245, 234, 0.3); /* Light teal focus */
+}
+
+body.dark-mode .btn-submit {
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+}
+body.dark-mode .btn-submit:hover {
+    background-color: #81E6D9; /* Slightly lighter teal */
+}
+
+body.dark-mode .auth-link {
+    color: var(--text-light-dark);
+}
+body.dark-mode .auth-link a {
+    color: var(--primary-light);
+}
+
+body.dark-mode .error-message {
+    background-color: rgba(245, 101, 101, 0.2);
+    border-color: rgba(245, 101, 101, 0.4);
+    color: #FEB2B2; /* Lighter red */
+}
+
+body.dark-mode .tab-buttons {
+    border-bottom-color: var(--border-color-dark);
+}
+
+body.dark-mode .tab-button {
+    color: var(--text-light-dark);
+}
+body.dark-mode .tab-button:hover {
+    color: var(--text-color-dark);
+}
+body.dark-mode .tab-button.active {
+    color: var(--primary-light);
+    border-bottom-color: var(--primary-light);
+}
+
+body.dark-mode .card-header {
+    border-bottom-color: var(--border-color-dark);
+}
+
+body.dark-mode .report-item h5, 
+body.dark-mode .location-item h5 {
+    color: var(--text-light-dark);
+}
+
+body.dark-mode .map-instructions {
+    background: rgba(178, 245, 234, 0.1); /* Light teal background */
+    border-left-color: var(--primary-light);
+    color: var(--primary-light);
+}
+
+body.dark-mode .modal {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+body.dark-mode .modal-close {
+    color: var(--text-light-dark);
+}
+body.dark-mode .modal-close:hover {
+    color: var(--text-color-dark);
+}
+
+/* Theme Toggle Button */
+.theme-toggle-button {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    padding: 8px 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.2rem; /* Adjust icon size */
+    line-height: 1;
+    margin-left: 15px;
+    transition: color var(--transition-speed), border-color var(--transition-speed), background-color var(--transition-speed);
+}
+
+.theme-toggle-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text-color);
+}
+
+body.dark-mode .theme-toggle-button {
+    border-color: var(--border-color-dark);
+    color: var(--text-light-dark);
+}
+
+body.dark-mode .theme-toggle-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color-dark);
+}
+
+/* Add hover transitions for dynamism */
+.btn-action:hover, .logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.report-item:hover, .location-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .report-item:hover, 
+body.dark-mode .location-item:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Leaflet dark mode adjustments */
+body.dark-mode .leaflet-tile {
+    filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+
+body.dark-mode .leaflet-popup-content-wrapper, 
+body.dark-mode .leaflet-popup-tip {
+    background: var(--card-bg-dark);
+    color: var(--text-color-dark);
+    box-shadow: var(--box-shadow-dark);
+}
+
+body.dark-mode #locationsMap {
+    border-color: var(--border-color-dark);
+}
+
+/* Universal Responsive Fluid Typography & Layout */
+html {
+  font-size: clamp(12px, 1.2vw + 1px, 18px);
+}
+
+.container, .card-container, .admin-container, main, section, .news-section {
+  width: 100%;
+  max-width: 1400px;
+  min-width: 280px;
+  margin: 0 auto;
+  padding-left: clamp(8px, 2vw, 32px);
+  padding-right: clamp(8px, 2vw, 32px);
+  box-sizing: border-box;
+}
+
+.page-header h1,
+.section-title,
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2.8rem);
+  line-height: 1.15;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+h2, h3 {
+  font-size: clamp(1.1rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tab-header, .tab-buttons, .nav-links {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.5rem, 1vw, 2rem);
+}
+
+.tab-btn, .tab-button, .nav-links a {
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  padding: clamp(0.4rem, 0.8vw, 1rem) clamp(0.6rem, 1.2vw, 1.5rem);
+  min-width: 80px;
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .container, .card-container, .admin-container, main, section, .news-section {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 2000px) {
+  html { font-size: clamp(16px, 1.5vw, 22px); }
+  .container, .card-container, .admin-container, main, section, .news-section {
+    max-width: 2000px;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+  .cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+  }
+  .page-header h1, .section-title, h1 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+  }
+}
+
+@media (min-width: 2500px) {
+  html { font-size: clamp(18px, 2vw, 24px); }
+  .container, .card-container, .admin-container, main, section, .news-section {
+    max-width: 2500px;
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+  .cards-grid, .card-container, .report-list, .locations-list, .news-grid {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+  }
+  .page-header h1, .section-title, h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .header-container {
+    padding: 0.5rem 1rem;
+  }
+  .nav-links {
+    gap: 1rem;
+  }
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 6px 10px;
+  }
+  .logo h1 {
+    font-size: 1.1rem;
+  }
+  .logo img {
+    height: 35px;
+    width: 35px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  header {
+    height: auto;
+    padding: 0.5rem 1rem;
+  }
+  .header-container {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .logo {
+    margin-left: 0;
+  }
+  nav {
+    order: 3;
+    width: 100%;
+    margin: 1rem 0;
+    justify-content: center;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .nav-links a {
+    font-size: 1rem;
+    padding: 5px 8px;
+  }
+  .user-controls {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    position: relative;
+  }
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+  }
+  .logo {
+    margin: 0.5rem 0;
+  }
+  nav {
+    margin: 0.5rem 0;
+  }
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-links a {
+    font-size: 0.95rem;
+    padding: 8px 12px;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .user-controls {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header-container {
+    padding: 0.25rem;
+  }
+  .logo h1 {
+    font-size: 1rem;
+  }
+  .logo img {
+    height: 30px;
+    width: 30px;
+  }
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+  .user-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .user-icon i {
+    font-size: 0.9rem;
+  }
+}
+

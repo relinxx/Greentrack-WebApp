@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - GreenTrack</title>
+    <link rel="stylesheet" href="../css/styles.css?v=1.2">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <style>
+        .reports-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .report-item {
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .report-type {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .report-type.trash {
+            background-color: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .report-type.planting {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .report-item p {
+            margin: 5px 0;
+            color: var(--text-color);
+        }
+
+        .action-buttons {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .action-buttons a {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .action-buttons a:hover {
+            background-color: var(--primary-color-dark);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="GreenTrack Logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%234CAF50%22%2F%3E%3Ctext%20x%3D%2220%22%20y%3D%2225%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%23FFFFFF%22%20text-anchor%3D%22middle%22%3EGT%3C%2Ftext%3E%3C%2Fsvg%3E'">
+                <h1>GreenTrack</h1>
+            </div>
+        <nav>
+                <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Map</a></li>
+                <li><a href="plant_trees.html">Plant Trees</a></li>
+                <li><a href="report.html">Report Waste</a></li>
+                <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="recommended_locations.html">Recommended Locations</a></li>
+                <li><a href="story.html">Stories</a></li>
+                <li><a href="profile.html" id="profile-link" class="active">Profile</a></li>
+            </ul>
+        </nav>
+            <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="light-icon" title="Switch to light mode">🔆</span>
+                <span class="dark-icon" title="Switch to dark mode">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>User Profile</h1>
+                <p class="subtitle">View and manage your GreenTrack account</p>
+            </div>
+
+            <div id="profile-loading" class="loading-indicator">Loading profile data...</div>
+            <div id="profile-error" class="error-message" style="display: none;"></div>
+
+            <div class="profile-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; align-items: flex-start;">
+                <!-- User Avatar and Details -->
+                <div class="card" id="profile-details" style="display: none;">
+                    <div class="card-header">
+                        <h3>Account Details</h3>
+                    </div>
+                    <div class="card-body" style="display: flex; flex-direction: column; align-items: center;">
+                        <div class="profile-info" style="width: 100%; text-align: center;">
+                            <p><strong>Username:</strong> <span id="profile-username"></span></p>
+                            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+                            <p><strong>Member Since:</strong> <span id="profile-created-at"></span></p>
+                        </div>
+                        <button id="logout-button" class="btn btn-danger" style="margin-top: 1.5em;">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Stats Section -->
+                <div class="card" id="user-stats" style="display: none;">
+                    <div class="card-header">
+                        <h3>Your Stats</h3>
+                    </div>
+                    <div class="card-body stats-container" style="display: flex; justify-content: space-around; gap: 1em; flex-wrap: wrap;">
+                        <div class="stat-card" style="flex: 1 1 100px; min-width: 100px; background: var(--bg-color); border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); padding: 1.2em; text-align: center; margin: 0.5em 0;">
+                            <div class="stat-icon" style="font-size: 2em; margin-bottom: 0.3em;">⭐</div>
+                            <div class="stat-value" id="profile-xp" style="font-size: 1.5em; font-weight: bold;">--</div>
+                            <div class="stat-label" style="color: var(--text-light);">XP Points</div>
+                        </div>
+                        <div class="stat-card" style="flex: 1 1 100px; min-width: 100px; background: var(--bg-color); border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); padding: 1.2em; text-align: center; margin: 0.5em 0;">
+                            <div class="stat-icon" style="font-size: 2em; margin-bottom: 0.3em;">📝</div>
+                            <div class="stat-value" id="profile-reports-count" style="font-size: 1.5em; font-weight: bold;">--</div>
+                            <div class="stat-label" style="color: var(--text-light);">Reports</div>
+                        </div>
+                        <div class="stat-card" style="flex: 1 1 100px; min-width: 100px; background: var(--bg-color); border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); padding: 1.2em; text-align: center; margin: 0.5em 0;">
+                            <div class="stat-icon" style="font-size: 2em; margin-bottom: 0.3em;">⏱️</div>
+                            <div class="stat-value" id="profile-volunteer-hours" style="font-size: 1.5em; font-weight: bold;">--</div>
+                            <div class="stat-label" style="color: var(--text-light);">Hours</div>
+                        </div>
+                    </div>
+                    <div id="stats-fallback" style="text-align: center; padding: 1em; color: var(--text-light); display: none;">
+                        No stats detected. Start contributing to see your progress!
+                    </div>
+                </div>
+
+                <!-- Badges Section -->
+                <div class="card" id="user-badges" style="display: none;">
+                    <div class="card-header">
+                        <h3>Badges Earned</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="badges-container" class="badges-grid" style="display: flex; flex-wrap: wrap; gap: 1em; justify-content: center; align-items: flex-start;">
+                            <!-- Badges will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tags Section -->
+                <div class="card" id="user-tags" style="display: none;">
+                    <div class="card-header">
+                        <h3>Tags</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="tags-container" class="tags-grid" style="display: flex; flex-wrap: wrap; gap: 0.5em; justify-content: center;">
+                            <!-- Tags will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Reports Section -->
+                <div class="card" id="user-reports" style="display: none;">
+                    <div class="card-header">
+                        <h3>My Recent Reports</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="my-reports-container" class="reports-list">
+                            <!-- User's reports will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html>

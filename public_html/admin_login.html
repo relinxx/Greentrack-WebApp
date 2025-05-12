@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - GreenTrack</title>
+    <link rel="stylesheet" href="../css/admin_modern.css">
+    <link rel="stylesheet" href="../css/styles.css?v=1.2">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <link rel="stylesheet" href="../css/large-screens.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Add specific style for placing toggle button on auth pages */
+        .auth-theme-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        body.auth-page {
+            background-image: url('../images/login-register-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        .auth-card {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Dark mode specific styles */
+        body.dark-mode.auth-page {
+            background-image: url('../images/login-register-background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        
+        body.dark-mode .auth-card {
+            background-color: rgba(33, 37, 41, 0.95);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.dark-mode .auth-card h1,
+        body.dark-mode .form-group label,
+        body.dark-mode .auth-link,
+        body.dark-mode .auth-link a {
+            color: #8eff8e; /* Light green color */
+        }
+        
+        body.dark-mode .form-group input[type="text"],
+        body.dark-mode .form-group input[type="email"],
+        body.dark-mode .form-group input[type="password"] {
+            background-color: #2c3135;
+            color: #8eff8e;
+            border-color: #444;
+        }
+    </style>
+</head>
+<body class="auth-page">
+    <!-- Theme Toggle Button -->
+    <button id="themeToggleBtn" class="theme-toggle-button auth-theme-toggle" title="Toggle theme">
+        <i class="fas fa-sun"></i> <!-- Default: Light mode icon -->
+    </button>
+
+    <div class="auth-card">
+        <h1>Admin Login</h1>
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn-submit">Login</button>
+        </form>
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+        <p class="auth-link">Need an admin account? <a href="admin_register.html">Register here</a></p>
+    </div>
+
+    <!-- Theme Toggle Script -->
+    <script src="../js/theme_toggle.js"></script>
+    <!-- Login Script -->
+    <script src="../js/admin_login.js?v=1"></script>
+</body>
+</html>

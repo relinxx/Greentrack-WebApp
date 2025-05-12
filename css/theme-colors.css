@@ -1,0 +1,86 @@
+/* Global Text Color Theme for GreenTrack
+   This file defines text colors for light and dark mode across all pages
+*/
+
+/* Light mode - dark green text */
+body {
+    color: #006400; /* Dark green color for light mode */
+}
+
+/* Dark mode - light green text */
+body.dark-mode {
+    color: #8eff8e; /* Light green color for dark mode */
+}
+
+/* Legend */
+.legend-title {
+    color: #000000; /* Dark green in light mode */
+}
+
+/* Text color inheritance for common elements */
+h1, h2, h3, h4, h5, h6, 
+p, span, li, td, th, 
+label, input, textarea, select,
+.card-title, .page-title, .subtitle {
+    color: inherit;
+}
+
+/* Form controls - inherit from parent in light mode */
+input, textarea, select {
+    color: inherit;
+}
+
+/* Dark mode - explicitly set light green for form elements */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    color: #8eff8e;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation links */
+.nav-links li a {
+    color: #006400; /* Dark green in light mode */
+}
+
+body.dark-mode .nav-links li a {
+    color: #8eff8e; /* Light green in dark mode */
+}
+
+/* Exception for active/hovered nav links */
+.nav-links li a:hover,
+.nav-links li a.active {
+    color: #4CAF50; /* Keep the same hover color for both modes */
+}
+
+body.dark-mode .nav-links li a:hover,
+body.dark-mode .nav-links li a.active {
+    color: #4CAF50; /* Keep the same hover color for both modes */
+    background-color: rgba(142, 255, 142, 0.1); /* Light green background with opacity */
+}
+
+
+body.dark-mode #legend-title {
+    color: #8eff8e; /* Light green in dark mode */
+}
+/* Card and section titles */
+.card-header h3,
+.section-title,
+.page-header h1 {
+    color: #006400; /* Dark green in light mode */
+}
+
+body.dark-mode .card-header h3,
+body.dark-mode .section-title,
+body.dark-mode .page-header h1 {
+    color: #8eff8e; /* Light green in dark mode */
+}
+
+/* Links */
+a {
+    color: #388E3C; /* Slightly lighter green for links in light mode */
+}
+
+body.dark-mode a {
+    color: #A5D6A7; /* Slightly darker green for links in dark mode */
+} 

@@ -1,0 +1,45 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Set the base directory
+# If your app is in a subdirectory like /greentrack, uncomment and modify:
+# RewriteBase /greentrack
+
+# Prevent direct access to PHP files inside the api directory (optional security)
+# RewriteCond %{REQUEST_URI} ^/api/.*\.php$
+# RewriteRule ^ - [F,L]
+
+# Handle API requests
+# If you want to implement a RESTful API structure (e.g., /api/reports instead of /api/reports.php)
+# Uncomment these lines:
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^api/([^/]+)/([^/]+)/?$ api/$1/$2.php [QSA,L]
+# RewriteRule ^api/([^/]+)/?$ api/$1.php [QSA,L]
+
+# Allow CORS preflight requests
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Authorization, Content-Type, X-Requested-With"
+    
+    # Handle preflight OPTIONS requests
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
+
+# Redirect to error page for 404s (optional)
+# ErrorDocument 404 /greentrack/404.html
+
+# Protect sensitive files
+<FilesMatch "^(config\.php|\.htaccess|README\.md)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# PHP settings (uncomment if needed)
+# php_value upload_max_filesize 10M
+# php_value post_max_size 10M
+# php_value memory_limit 128M
+# php_flag display_errors Off
+# php_flag log_errors On 

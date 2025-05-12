@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTrack - Map</title>
+    <link rel="stylesheet" href="../css/styles.css?v=1.2">
+    <link rel="stylesheet" href="../css/map.css?v=1.1">
+    <link rel="stylesheet" href="../css/theme-colors.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="GreenTrack Logo" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%3E%3Crect%20width%3D%2240%22%20height%3D%2240%22%20fill%3D%22%234CAF50%22%2F%3E%3Ctext%20x%3D%2220%22%20y%3D%2225%22%20font-family%3D%22Arial%22%20font-size%3D%2216%22%20fill%3D%22%23FFFFFF%22%20text-anchor%3D%22middle%22%3EGT%3C%2Ftext%3E%3C%2Fsvg%3E'">
+            <h1>GreenTrack</h1>
+            </div>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html" class="active">Map</a></li>
+                    <li><a href="plant_trees.html">Plant Trees</a></li>
+                    <li><a href="report.html">Report Waste</a></li>
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="recommended_locations.html">Recommended Locations</a></li>
+                    <li><a href="story.html">Stories</a></li>
+                    <li><a href="profile.html" id="profile-link">Profile</a></li>
+                </ul>
+            </nav>
+            <button id="dark-mode-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="light-icon" title="Switch to light mode">🔆</span>
+                <span class="dark-icon" title="Switch to dark mode">🌙</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="page-header">
+                <h1>Environmental Map</h1>
+                <p class="subtitle">Explore waste reports and tree plantings around the world. Toggle the heatmap to see activity hotspots.</p>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <h3>Interactive Map</h3>
+                    <div id="map-controls">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="heatmap-toggle">
+                            <span class="slider round"></span>
+                            <span class="toggle-label">Show Heatmap</span>
+                        </label>
+                    </div>
+                </div>
+                <div id="map" style="height: 600px; width: 100%;"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/map.js"></script>
+</body>
+</html>
+
