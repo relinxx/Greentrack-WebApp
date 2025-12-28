@@ -113,7 +113,7 @@ After running the sample data initialization, you can use these test accounts:
 ### Still having issues?
 
 1. Check the PHP error logs
-2. Try running the database initialization scripts again
+2. Try running the database initializatin scripts again
 3. Clear browser cache and try again
 
 ## License
