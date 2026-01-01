@@ -114,7 +114,7 @@ After running the sample data initialization, you can use these test accounts:
 
 1. Check the PHP error logs
 2. Try running the databasinitializatin scripts again
-3. Clear browser cache and ty again
+3. Clear browr cache and ty again
 
 ## License
 
