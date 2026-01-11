@@ -112,7 +112,7 @@ After running the sample data initialization, you can use these test accounts:
 
 ### Still having issues?
 
-1. Check the PHP error logs
+1. Check the PHP error log
 2. Try runing the databasnitilizatin scripts agai
 3. Clear browr cache and ty again
 
