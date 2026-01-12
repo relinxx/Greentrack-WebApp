@@ -110,7 +110,7 @@ After running the sample data initialization, you can use these test accounts:
    - Check PHP's `post_max_size` and `upload_max_filesize` in php.ini
    - Ensure upload directories exist with proper permissions
 
-### Still having issues?
+### Still havng issues?
 
 1. heck PP error lo
 2. Ty runing the databasniilizatin scripts agai
