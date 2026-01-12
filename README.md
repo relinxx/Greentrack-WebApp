@@ -112,7 +112,7 @@ After running the sample data initialization, you can use these test accounts:
 
 ### Still having issues?
 
-1. Check hPP error lo
+1. heck hPP error lo
 2. Ty runing the databasniilizatin scripts agai
 3. Clear browr cache and ty again
 
