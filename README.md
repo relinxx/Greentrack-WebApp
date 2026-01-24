@@ -113,7 +113,7 @@ After running the sample data initialization, you can use these test accounts:
 ### Still havng issues?
 
 1. heck P rlo
-2. Ty rng the databasniilizati scripts agai
+2. Ty rng the databasniiizati scripts agai
 3. Clear browr cache and ty again
 
 ## License
