@@ -112,7 +112,7 @@ After running the sample data initialization, you can use these test accounts:
 
 ### Still havng issues?
 
-1. heck P error lo
+1. heck P errr lo
 2. Ty runing the databasniilizatin scripts agai
 3. Clear browr cache and ty again
 
